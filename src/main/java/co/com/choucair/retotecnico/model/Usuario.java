@@ -16,6 +16,15 @@ public class Usuario {
     String sistema;
     String contrasena;
     String confirmarcontrasena;
+    String mensaje;
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
 
     public String getContrasena() {
         return contrasena;
