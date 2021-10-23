@@ -2,8 +2,7 @@ package co.com.choucair.retotecnico.stepdefinitions;
 
 import co.com.choucair.retotecnico.model.Usuario;
 import co.com.choucair.retotecnico.questions.RegistroQuestion;
-import co.com.choucair.retotecnico.tasks.AbreWeb;
-import co.com.choucair.retotecnico.tasks.RealizarRegistro;
+import co.com.choucair.retotecnico.tasks.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -29,7 +28,10 @@ public class RegistroStepDefinition {
 
     @When("^cuando ingresa su informacion basica$")
     public void cuandoIngresaSuInformacionBasica(List<Usuario> usuario) {
-        OnStage.theActorInTheSpotlight().attemptsTo(RealizarRegistro.personal(usuario.get(0)));
+        OnStage.theActorInTheSpotlight().attemptsTo(RegistroInformacion.informacionPersonal(usuario.get(0)),
+                RegistroDireccion.direccionPersonal(usuario.get(0)),
+                RegistroDispositivo.dispositivoPersonal(usuario.get(0)),
+                RegistroContrasena.contrasenaPersonal(usuario.get(0)));
     }
 
     @Then("^debe ver la opcion (.*) para finalizar registro$")
