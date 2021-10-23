@@ -6,19 +6,20 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 
+import java.util.List;
+
 import static co.com.choucair.retotecnico.userinterface.DireccionUI.BTN_DISPOSITIVOS;
 import static co.com.choucair.retotecnico.userinterface.DireccionUI.LBL_AUTO;
-import static co.com.choucair.retotecnico.userinterface.InformacionUI.BTN_DIRECCION;
 
 
 public class RegistroDireccion implements Task {
-    Usuario usuario;
 
-    public RegistroDireccion(Usuario usuario){
+    private List<Usuario> usuario;
+    public RegistroDireccion(List<Usuario> usuario){
         this.usuario = usuario;
     }
-    public static RegistroDireccion direccionPersonal(Usuario direccion){
-        return Tasks.instrumented(RegistroDireccion.class,direccion);
+    public static RegistroDireccion direccionPersonal(List<Usuario> usuario){
+        return Tasks.instrumented(RegistroDireccion.class,usuario);
     }
     @Override
     public <T extends Actor> void performAs(T actor){

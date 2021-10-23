@@ -14,6 +14,8 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 
 import java.util.List;
 
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
+
 
 public class RegistroStepDefinition {
     @Before
@@ -28,10 +30,11 @@ public class RegistroStepDefinition {
 
     @When("^cuando ingresa su informacion basica$")
     public void cuandoIngresaSuInformacionBasica(List<Usuario> usuario) {
-        OnStage.theActorInTheSpotlight().attemptsTo(RegistroInformacion.informacionPersonal(usuario.get(0)),
-                RegistroDireccion.direccionPersonal(usuario.get(0)),
-                RegistroDispositivo.dispositivoPersonal(usuario.get(0)),
-                RegistroContrasena.contrasenaPersonal(usuario.get(0)));
+        theActorInTheSpotlight().attemptsTo(
+                RegistroInformacionBasic.informacionPersonal(usuario),
+                RegistroDireccion.direccionPersonal(usuario),
+                RegistroDispositivo.dispositivoPersonal(usuario),
+                RegistroContrasena.contrasenaPersonal(usuario));
     }
 
     @Then("^debe ver la opcion (.*) para finalizar registro$")
